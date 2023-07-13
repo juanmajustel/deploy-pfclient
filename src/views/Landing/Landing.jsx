@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import "./Landing.css";
 
 const Landing = () => {
+  const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -16,17 +18,17 @@ const Landing = () => {
 
   useEffect(() => {
     if (!isLoading) {
-      // Redirigir a http://localhost:5173/ después de la carga
+      // Redirigir a "/home" después de la carga
       setTimeout(() => {
-        window.location.href = "http://localhost:5173/home";
+        navigate("/home");
       }, 4000);
     }
-  }, [isLoading]);
+  }, [isLoading, navigate]);
 
   return (
     <div>
       <div className="container">
-        <div class="spinner"></div>
+        <div className="spinner"></div>
       </div>
     </div>
   );
